@@ -26,12 +26,13 @@ class AuthService {
     return user;
   }
 
-  // Sign in with Google
+  /// Sign in with Google
   Future<User> googleSignIn() async {
     try {
       GoogleSignInAccount googleSignInAccount = await _googleSignIn.signIn();
       GoogleSignInAuthentication googleAuth =
           await googleSignInAccount.authentication;
+
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
@@ -44,8 +45,8 @@ class AuthService {
       updateUserData(user);
 
       return user;
-    } catch (e) {
-      print(e);
+    } catch (error) {
+      print(error);
       return null;
     }
   }
