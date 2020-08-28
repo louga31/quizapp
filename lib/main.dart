@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quizapp/models/models.dart';
 import 'package:quizapp/services/services.dart';
 import 'package:quizapp/screens/screens.dart';
 
@@ -12,6 +13,7 @@ void main() async {
   await Firebase.initializeApp();
 
   runApp(MultiProvider(providers: [
+    StreamProvider<Report>.value(value: Global.reportRef.documentStream),
     StreamProvider<User>.value(value: AuthService().user),
     Provider<AuthService>(create: (_) => AuthService()),
   ], child: MyApp()));
@@ -36,6 +38,7 @@ class MyApp extends StatelessWidget {
         bottomAppBarTheme: BottomAppBarTheme(
           color: Colors.black87,
         ),
+        accentColor: Colors.deepPurple,
         brightness: Brightness.dark,
         textTheme: TextTheme(
           bodyText1: TextStyle(fontSize: 18),

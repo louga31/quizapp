@@ -39,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.deepPurple,
         title: Text(tabNames[_pageIndex]),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -65,6 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onPageChanged: onPageChanged,
         controller: _pageController,
       ),
+      drawer: TopicDrawer(),
     );
   }
 
