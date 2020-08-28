@@ -144,7 +144,7 @@ class CongratsPage extends StatelessWidget {
               _updateUserReport(quiz);
               Navigator.pushNamedAndRemoveUntil(
                 context,
-                '/home_screen',
+                '/home',
                 (route) => false,
               );
             },

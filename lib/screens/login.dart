@@ -22,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void checkLoggedIn() async {
     await Provider.of<AuthService>(context, listen: false).getUser.then((user) {
       if (user != null) {
-        Navigator.pushReplacementNamed(context, '/home_screen');
+        Navigator.pushReplacementNamed(context, '/home');
       }
     });
   }
@@ -65,10 +65,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: () async {
                           User user = await Provider.of<AuthService>(context,
                                   listen: false)
-                              .anonSignIn();
+                              .appleSignIn();
                           if (user != null) {
-                            Navigator.pushReplacementNamed(
-                                context, '/home_screen');
+                            Navigator.pushReplacementNamed(context, '/home');
                           }
                         },
                       ),
@@ -114,7 +113,7 @@ class LoginButton extends StatelessWidget {
           onPressed: () async {
             User user = await loginMethod();
             if (user != null) {
-              Navigator.pushReplacementNamed(context, '/home_screen');
+              Navigator.pushReplacementNamed(context, '/home');
             }
           },
           icon: Icon(icon, color: Colors.white),
